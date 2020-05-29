@@ -1,0 +1,30 @@
+
+class Result {
+
+    /*
+     * Complete the 'balancedSum' function below.
+     *
+     * The function is expected to return an INTEGER.
+     * The function accepts INTEGER_ARRAY arr as parameter.
+     */
+
+    public static int balancedSum(List<Integer> arr) {
+        int left = 0, sumLeft = 0, sumRight = 0;
+        int right = arr.size() - 1;
+        sumLeft = arr.get(left);
+        sumRight = arr.get(right);
+        while (left < right) {
+            if (sumLeft < sumRight) {
+                sumLeft += arr.get(++left);
+            } else if (sumLeft > sumRight) {
+                sumRight += arr.get(++right); 
+            } else {
+                left++;
+                right--;
+            }
+        }
+        return sumLeft == sumRight ? right : -1;
+        
+    }
+
+    }
